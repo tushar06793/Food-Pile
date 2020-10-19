@@ -10,10 +10,9 @@ import javax.swing.table.DefaultTableModel;
 public class Inventory extends javax.swing.JFrame {
 
     private Connection conn;
-    String nam="ayush";
-  
-
-   
+    
+       String nam= Form.getnm();  
+       
     public Inventory() throws ClassNotFoundException, SQLException {
         initComponents();
         
@@ -51,6 +50,9 @@ public class Inventory extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        logout = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        pname = new javax.swing.JLabel();
 
         jButton5.setText("jButton5");
 
@@ -133,73 +135,104 @@ public class Inventory extends javax.swing.JFrame {
             }
         });
 
+        logout.setText("Logout");
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
+
+        pname.setText("jLabel5");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(nm, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(sort, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                                                .addComponent(search)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(ct, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(7, 7, 7)))
-                                            .addGap(26, 26, 26)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(pc, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton6)
-                                        .addGap(53, 53, 53)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addComponent(insert))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(49, 49, 49)
-                                        .addComponent(qt, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(64, 64, 64)
-                                    .addComponent(tq, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(value, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jButton3)
-                                    .addGap(71, 71, 71)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton4)
-                                .addGap(23, 23, 23)))))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addComponent(refresh)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                    .addComponent(nm, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addComponent(sort, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                                                        .addComponent(search)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addComponent(ct, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGap(7, 7, 7)))
+                                                    .addGap(26, 26, 26)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(pc, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(jLabel4)
+                                                .addComponent(jLabel2))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jButton7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jButton6)
+                                                .addGap(53, 53, 53)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(20, 20, 20)
+                                                .addComponent(insert))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(49, 49, 49)
+                                                .addComponent(qt, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(64, 64, 64)
+                                            .addComponent(tq, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(value, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jButton3)
+                                            .addGap(71, 71, 71)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jButton4)
+                                        .addGap(23, 23, 23)))))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(153, 153, 153)
+                                .addComponent(refresh)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(logout))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(pname)
+                                .addGap(41, 41, 41)))
+                        .addGap(36, 36, 36))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
-                .addComponent(refresh)
-                .addGap(30, 30, 30)
+                .addGap(28, 28, 28)
+                .addComponent(pname)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(refresh)
+                        .addGap(30, 30, 30))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(logout)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -243,7 +276,7 @@ public class Inventory extends javax.swing.JFrame {
            
             String query2 = "SELECT * FROM user where username = ?";
            
-              PreparedStatement preStat = conn.prepareStatement(query2);
+            PreparedStatement preStat = conn.prepareStatement(query2);
             preStat.setString(1, nam);
             ResultSet result = preStat.executeQuery();
             
@@ -257,7 +290,7 @@ public class Inventory extends javax.swing.JFrame {
                tableModel.addRow(new Object[] {name, category, price, quantity, thquantity });
             }
             
-              preStat.close();
+            preStat.close();
             
         } catch (Exception ex) {
            ex.getStackTrace();
@@ -295,6 +328,13 @@ public class Inventory extends javax.swing.JFrame {
             refresh.doClick();
             
               pS.close();
+              
+              nm.setText("");
+              ct.setText("");
+              pc.setText("");
+              qt.setText("");
+              tq.setText("");
+              
         } catch (SQLException ex) {
             
         }
@@ -310,14 +350,15 @@ public class Inventory extends javax.swing.JFrame {
         try {
          
             
-            tableModel.setRowCount(0);
+           tableModel.setRowCount(0);
             String srch=search.getText();
             String v=value.getText();
             
             
-            String qry2="Select * from user where "+srch+" = ? AND username = 'ayush'";
+            String qry2="Select * from user where "+srch+" = ? and username = ?" ;
             PreparedStatement pr = conn.prepareStatement(qry2);
             pr.setString(1, v);
+            pr.setString(2, nam);
             
             ResultSet rt = pr.executeQuery();
             
@@ -331,6 +372,8 @@ public class Inventory extends javax.swing.JFrame {
                tableModel.addRow(new Object[] {name, category, price, quantity, thquantity });
             }
             
+             search.setText("");
+             value.setText("");
               pr.close();
             
         } catch (SQLException ex) {
@@ -349,8 +392,10 @@ public class Inventory extends javax.swing.JFrame {
             tableModel.setRowCount(0);
             String so=sort.getText();
             
-            String qry3="select * from user order by "+so;
+            String qry3="select * from user where username = ? order by "+so;
             PreparedStatement pst=conn.prepareStatement(qry3);
+            
+            pst.setString(1, nam);
             
             ResultSet rs=pst.executeQuery();
             
@@ -363,6 +408,8 @@ public class Inventory extends javax.swing.JFrame {
                 
                 tableModel.addRow(new Object[] {name, category, price, quantity, thquantity });
             }
+            
+            sort.setText("");
             
         } catch (SQLException ex) {
             
@@ -430,6 +477,13 @@ public class Inventory extends javax.swing.JFrame {
             prst.executeUpdate();
             
             refresh.doClick();
+            
+             nm.setText("");
+              ct.setText("");
+              pc.setText("");
+              qt.setText("");
+              tq.setText("");
+              
             prst.close();
         } catch (SQLException ex) {
             
@@ -437,22 +491,18 @@ public class Inventory extends javax.swing.JFrame {
         
     }                                        
 
-    public static void main(String args[]) {
-       
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    new Inventory().setVisible(true);
-                } catch (ClassNotFoundException | SQLException ex) {
-                   ex.getStackTrace();
-                }
-            }
-        });
-      
-    }
-
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        try {
+            // TODO add your handling code here:
+            dispose();
+            new Form().setVisible(true);
+        } catch (ClassNotFoundException | SQLException ex) {
+            
+        }
+    }                                      
+  
+    
+    
     // Variables declaration - do not modify                     
     private javax.swing.JTable Table;
     private javax.swing.JTextField ct;
@@ -465,10 +515,13 @@ public class Inventory extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton logout;
     private javax.swing.JTextField nm;
     private javax.swing.JTextField pc;
+    private javax.swing.JLabel pname;
     private javax.swing.JTextField qt;
     private javax.swing.JButton refresh;
     private javax.swing.JTextField search;
