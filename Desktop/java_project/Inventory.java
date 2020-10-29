@@ -46,11 +46,10 @@ public class Inventory extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Table = new javax.swing.JTable();
         refresh = new javax.swing.JButton();
-        ct = new javax.swing.JTextField();
-        nm = new javax.swing.JTextField();
-        pc = new javax.swing.JTextField();
-        tq = new javax.swing.JTextField();
-        qt = new javax.swing.JTextField();
+        category = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
+        thquantity = new javax.swing.JTextField();
+        quantity = new javax.swing.JTextField();
         insert = new javax.swing.JButton();
         search = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -73,6 +72,8 @@ public class Inventory extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         subs = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        price = new javax.swing.JTextField();
+        Alert = new javax.swing.JButton();
 
         jButton5.setText("jButton5");
 
@@ -95,15 +96,9 @@ public class Inventory extends javax.swing.JFrame {
             }
         });
 
-        nm.addActionListener(new java.awt.event.ActionListener() {
+        name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nmActionPerformed(evt);
-            }
-        });
-
-        pc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pcActionPerformed(evt);
+                nameActionPerformed(evt);
             }
         });
 
@@ -205,6 +200,13 @@ public class Inventory extends javax.swing.JFrame {
 
         jLabel6.setText("Value");
 
+        Alert.setText("Alert");
+        Alert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AlertActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -215,30 +217,33 @@ public class Inventory extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(nm, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ct, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pc, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(subs, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel6)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(qt, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(9, 9, 9)
-                                .addComponent(tq, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(thquantity, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(13, 13, 13))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(refresh)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(refresh)
+                                .addGap(118, 118, 118)
+                                .addComponent(Alert))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -298,17 +303,18 @@ public class Inventory extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(refresh)
                     .addComponent(jButton1)
-                    .addComponent(jButton8))
+                    .addComponent(jButton8)
+                    .addComponent(Alert))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(pc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(qt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(nm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(thquantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(insert)
@@ -345,7 +351,8 @@ public class Inventory extends javax.swing.JFrame {
     //show content of table
     private void refreshActionPerformed(java.awt.event.ActionEvent evt) {                                        
         DefaultTableModel tableModel = ( DefaultTableModel) Table.getModel();
-       
+          
+        
         try {                                        
             
             tableModel.setRowCount(0);
@@ -357,17 +364,15 @@ public class Inventory extends javax.swing.JFrame {
             ResultSet result = preStat.executeQuery();
             
             while(result.next()) {
-                String name = result.getString("name");
-                String category= result.getString("category");
-                float price  = result.getFloat("price");
-                int quantity=result.getInt("quantity");
-                int thquantity=result.getInt("threshold_quantity");
+                String nm = result.getString("name");
+                String ct= result.getString("category");
+                float pc  = result.getFloat("price");
+                int qt=result.getInt("quantity");
+                int thqt=result.getInt("threshold_quantity");
                 
-               tableModel.addRow(new Object[] {name, category, price, quantity, thquantity });
+               tableModel.addRow(new Object[] {nm, ct, pc, qt, thqt });
                
-               if(quantity<=thquantity){
-                   JOptionPane.showMessageDialog(null, name+" is at or below the thereshold quantity ");
-               }
+              
             }
             
             pnm.setText(nam);
@@ -381,20 +386,20 @@ public class Inventory extends javax.swing.JFrame {
    
     }                                       
 
-    private void pcActionPerformed(java.awt.event.ActionEvent evt) {                                   
-        // TODO add your handling code here:
-    }                                  
-
     
     //insert into the table
     private void insertActionPerformed(java.awt.event.ActionEvent evt) {                                       
 
+          if(name.getText().equals("") || category.getText().equals("") || price.getText().equals("") || quantity.getText().equals("") || thquantity.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "One or more fields empty", "Unable to Add",JOptionPane.ERROR_MESSAGE);
+       }
+          else{
         try {
-            String n=nm.getText();
-            String c=ct.getText();
-            float p=Float.parseFloat(pc.getText());
-            int q=Integer.parseInt(qt.getText());
-            int t=Integer.parseInt(tq.getText());
+            String n=name.getText();
+            String c=category.getText();
+            float p=Float.parseFloat(price.getText());
+            int q=Integer.parseInt(quantity.getText());
+            int t=Integer.parseInt(thquantity.getText());
             
             
             String s = "INSERT INTO user (name, category, price , quantity, threshold_quantity, username) VALUES(?, ?, ?, ?, ?,?)";
@@ -416,15 +421,15 @@ public class Inventory extends javax.swing.JFrame {
             
               pS.close();
               
-              nm.setText("");
-              ct.setText("");
-              pc.setText("");
-              qt.setText("");
-              tq.setText("");
+              name.setText("");
+              category.setText("");
+              price.setText("");
+              quantity.setText("");
+              thquantity.setText("");
               
         } catch (SQLException ex) {
             
-        }
+        }}
     }                                      
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {                                       
@@ -434,6 +439,14 @@ public class Inventory extends javax.swing.JFrame {
     //searching into the table
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         DefaultTableModel tableModel = ( DefaultTableModel) Table.getModel();
+        
+        if(search.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Search field empty", "Unable to Search",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(value.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Value field empty", "Unable to Search",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
         try {
          
             
@@ -450,13 +463,13 @@ public class Inventory extends javax.swing.JFrame {
             ResultSet rt = pr.executeQuery();
             
              while(rt.next()) {
-                String name = rt.getString("name");
-                String category= rt.getString("category");
-                float price  = rt.getFloat("price");
-                int quantity=rt.getInt("quantity");
-                int thquantity=rt.getInt("threshold_quantity");
+                String nm = rt.getString("name");
+                String ct= rt.getString("category");
+                float pc  = rt.getFloat("price");
+                int qt=rt.getInt("quantity");
+                int thqt=rt.getInt("threshold_quantity");
                 
-               tableModel.addRow(new Object[] {name, category, price, quantity, thquantity });
+               tableModel.addRow(new Object[] {nm, ct, pc, qt, thqt });
             }
              
              
@@ -468,12 +481,17 @@ public class Inventory extends javax.swing.JFrame {
         } catch (SQLException ex) {
             
         }
-        
+        } 
     }                                        
 
     
     //sorting the table
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+       
+        if(sort.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Sort field empty", "Unable to Sort",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
         try {
             // TODO add your handling code here:
             DefaultTableModel tableModel = ( DefaultTableModel) Table.getModel();
@@ -489,13 +507,13 @@ public class Inventory extends javax.swing.JFrame {
             ResultSet rs=pst.executeQuery();
             
             while(rs.next()) {
-                String name = rs.getString("name");
-                String category= rs.getString("category");
-                float price  = rs.getFloat("price");
-                int quantity=rs.getInt("quantity");
-                int thquantity=rs.getInt("threshold_quantity");
+                String nm = rs.getString("name");
+                String ct= rs.getString("category");
+                float pc  = rs.getFloat("price");
+                int qt=rs.getInt("quantity");
+                int thqt=rs.getInt("threshold_quantity");
                 
-                tableModel.addRow(new Object[] {name, category, price, quantity, thquantity });
+                tableModel.addRow(new Object[] {nm, ct, pc, qt, thqt });
             }
             
             sort.setText("");
@@ -503,7 +521,7 @@ public class Inventory extends javax.swing.JFrame {
         } catch (SQLException ex) {
             
         }
-       
+        }
        
     }                                        
 
@@ -513,17 +531,21 @@ public class Inventory extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             
-            int row=Table.getSelectedRow();
+           int row=Table.getSelectedRow();
             String name = (String) Table.getValueAt(row,0);
             
+           // if(row==0){
+             //    JOptionPane.showMessageDialog(null, "Select which row to delete", "Unable to delete",JOptionPane.ERROR_MESSAGE);
+            //}
+           // else{
             String qry="DELETE FROM user where name=?";
             PreparedStatement ps = conn.prepareStatement(qry);
             ps.setString(1,name);
               ps.executeUpdate();
               
               refresh.doClick();
-        } catch (SQLException ex) {
-            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Select which row to delete", "Unable to delete",JOptionPane.ERROR_MESSAGE);
         }
               
     }                                        
@@ -532,52 +554,59 @@ public class Inventory extends javax.swing.JFrame {
     //select a row in table
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         
-        DefaultTableModel model = ( DefaultTableModel) Table.getModel();
-          int row=Table.getSelectedRow();
-            String name = (String) model.getValueAt(row,0);
-              String category = (String) model.getValueAt(row,1);
-                String price = model.getValueAt(row,2).toString();
-                  String quantity = model.getValueAt(row,3).toString();
-                   String thquantity = model.getValueAt(row,4).toString();
+        DefaultTableModel model = (DefaultTableModel) Table.getModel();
+          try{int row=Table.getSelectedRow();
+            String nm = (String) model.getValueAt(row,0);
+              String ct = (String) model.getValueAt(row,1);
+                String pc = model.getValueAt(row,2).toString();
+                  String qt = model.getValueAt(row,3).toString();
+                   String thqt = model.getValueAt(row,4).toString();
                     
-                    nm.setText(name);
-                    ct.setText(category);
-                    pc.setText(price);
-                    qt.setText(quantity);
-                    tq.setText(thquantity);
+                    name.setText(nm);
+                    category.setText(ct);
+                    price.setText(pc);
+                    quantity.setText(qt);
+                    thquantity.setText(thqt);
+          }catch(Exception e){
+              JOptionPane.showMessageDialog(null, "Select which row to edit", "Unable to delete",JOptionPane.ERROR_MESSAGE);
+          }  
                                     
     }                                        
 
     
     //update the table
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+       if(name.getText().equals("") || category.getText().equals("") || price.getText().equals("") || quantity.getText().equals("") || thquantity.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "One or more fields empty", "Unable to Update",JOptionPane.ERROR_MESSAGE);
+       }
+       else{
         try {
             
             String qry5= "update user set category=?, price=?, quantity=?, threshold_quantity=? where name=?";
             
             PreparedStatement prst= conn.prepareStatement(qry5);
             
-            prst.setString(5, nm.getText());
-            prst.setString(1, ct.getText());
-            prst.setFloat(2, Float.parseFloat(pc.getText()));
-            prst.setInt(3, Integer.parseInt(qt.getText()));
-            prst.setInt(4,Integer.parseInt(tq.getText()));
+            prst.setString(5, name.getText());
+            prst.setString(1, category.getText());
+            prst.setFloat(2, Float.parseFloat(price.getText()));
+            prst.setInt(3, Integer.parseInt(quantity.getText()));
+            prst.setInt(4,Integer.parseInt(thquantity.getText()));
             
             prst.executeUpdate();
             
             refresh.doClick();
             
-             nm.setText("");
-              ct.setText("");
-              pc.setText("");
-              qt.setText("");
-              tq.setText("");
+             name.setText("");
+              category.setText("");
+              price.setText("");
+              quantity.setText("");
+              thquantity.setText("");
               
             prst.close();
         } catch (SQLException ex) {
             
         }
-        
+       }
     }                                        
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {                                       
@@ -593,7 +622,7 @@ public class Inventory extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         
          DefaultTableModel model = ( DefaultTableModel) Table.getModel();
-          int rw=Table.getSelectedRow();
+        try{  int rw=Table.getSelectedRow();
             String sname = (String) model.getValueAt(rw,0);
               String scag = (String) model.getValueAt(rw,1);
                 String sprice = model.getValueAt(rw,2).toString();
@@ -613,15 +642,18 @@ public class Inventory extends javax.swing.JFrame {
                p.setRangeGridlinePaint(Color.BLUE);
                ChartFrame fr=new ChartFrame("item details",chart);
                fr.setVisible(true);
-               fr.setSize(500,500);
+               fr.setSize(500,500);}
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Select whose bar chart to show", "Unable to delete",JOptionPane.ERROR_MESSAGE);
+        }
         
        
        
     }                                        
 
-    private void nmActionPerformed(java.awt.event.ActionEvent evt) {                                   
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {                                     
         // TODO add your handling code here:
-    }                                  
+    }                                    
 
     private void valueActionPerformed(java.awt.event.ActionEvent evt) {                                      
         // TODO add your handling code here:
@@ -633,6 +665,13 @@ public class Inventory extends javax.swing.JFrame {
 
     private void sbuttonActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
+         if(subs.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "SubSearch field empty", "Unable to Search",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(sval.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Value field empty", "Unable to Search",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
           DefaultTableModel tableModel = ( DefaultTableModel) Table.getModel();
         try {
          
@@ -651,13 +690,13 @@ public class Inventory extends javax.swing.JFrame {
             ResultSet rt = r.executeQuery();
             
              while(rt.next()) {
-                String name = rt.getString("name");
-                String category= rt.getString("category");
-                float price  = rt.getFloat("price");
-                int quantity=rt.getInt("quantity");
-                int thquantity=rt.getInt("threshold_quantity");
+                String nm = rt.getString("name");
+                String ct= rt.getString("category");
+                float pc = rt.getFloat("price");
+                int qt=rt.getInt("quantity");
+                int tqt=rt.getInt("threshold_quantity");
                 
-               tableModel.addRow(new Object[] {name, category, price, quantity, thquantity });
+               tableModel.addRow(new Object[] {nm, ct, pc, qt, tqt });
             }
              
              
@@ -673,14 +712,14 @@ public class Inventory extends javax.swing.JFrame {
                                             
 
     
-        
+        }   
     }                                       
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         
           DefaultTableModel model = ( DefaultTableModel) Table.getModel();
-          int rw=Table.getSelectedRow();
+        try{  int rw=Table.getSelectedRow();
             String sname = (String) model.getValueAt(rw,0);
               String scag = (String) model.getValueAt(rw,1);
                 String sprice = model.getValueAt(rw,2).toString();
@@ -697,14 +736,61 @@ public class Inventory extends javax.swing.JFrame {
                  JFreeChart chart= ChartFactory.createPieChart3D(sname,dcd,true, true,true);
                ChartFrame fr=new ChartFrame("item details",chart);
                fr.setVisible(true);
-               fr.setSize(500,500);
+               fr.setSize(500,500);}
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Select whose pie chart to show", "Unable to delete",JOptionPane.ERROR_MESSAGE);
+        }
     }                                        
+
+    private void AlertActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        // TODO add your handling code here:
+         DefaultTableModel tableModel = ( DefaultTableModel) Table.getModel();
+          
+        
+         
+        try {                                        
+            
+            tableModel.setRowCount(0);
+           
+            String query2 = "SELECT * FROM user where username = ?";
+           
+            PreparedStatement preStat = conn.prepareStatement(query2);
+            preStat.setString(1, nam);
+            ResultSet result = preStat.executeQuery();
+            
+            while(result.next()) {
+                
+                String nm = result.getString("name");
+                String ct= result.getString("category");
+                float pc  = result.getFloat("price");
+                int qt=result.getInt("quantity");
+                int thqt=result.getInt("threshold_quantity");
+                
+                   if(qt<=thqt){
+                    JOptionPane.showMessageDialog(null, nm+" is at or below its threshold quantity", "Alert",JOptionPane.ERROR_MESSAGE);
+    
+                
+               tableModel.addRow(new Object[] {nm, ct, pc, qt, thqt });}
+              
+            }
+            
+            
+            
+            
+            preStat.close();
+            
+        } catch (Exception ex) {
+           ex.getStackTrace();
+        }
+        
+    }                                     
   
 
     
     // Variables declaration - do not modify                     
+    private javax.swing.JButton Alert;
     private javax.swing.JTable Table;
-    private javax.swing.JTextField ct;
+    private javax.swing.JTextField category;
     private javax.swing.JButton insert;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -724,17 +810,17 @@ public class Inventory extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logout;
-    private javax.swing.JTextField nm;
-    private javax.swing.JTextField pc;
+    private javax.swing.JTextField name;
     private javax.swing.JLabel pnm;
-    private javax.swing.JTextField qt;
+    private javax.swing.JTextField price;
+    private javax.swing.JTextField quantity;
     private javax.swing.JButton refresh;
     private javax.swing.JButton sbutton;
     private javax.swing.JTextField search;
     private javax.swing.JTextField sort;
     private javax.swing.JTextField subs;
     private javax.swing.JTextField sval;
-    private javax.swing.JTextField tq;
+    private javax.swing.JTextField thquantity;
     private javax.swing.JTextField value;
     // End of variables declaration                   
 }

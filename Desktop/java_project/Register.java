@@ -2,7 +2,11 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 public class Register extends javax.swing.JFrame {
@@ -27,8 +31,8 @@ public class Register extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         un = new javax.swing.JTextField();
         ei = new javax.swing.JTextField();
-        pw = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        pw = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,23 +96,63 @@ public class Register extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         
         try {
-            String s="insert into form (username , email, password) values (?,?,?)";
-            PreparedStatement ps=conn.prepareStatement(s);
-            ps.setString(1, un.getText());
-            ps.setString(2, ei.getText());
-            ps.setString(3,pw.getText());
+            String a="select * from form where username=?";
+            PreparedStatement p=conn.prepareStatement(a);
+            p.setString(1, un.getText());
+            ResultSet r=p.executeQuery();
             
-            ps.executeUpdate();
+             String ar="select * from form where email=?";
+            PreparedStatement pq=conn.prepareStatement(ar);
+            pq.setString(1, ei.getText());
+            ResultSet rs=pq.executeQuery();
             
-            ps.close();
+            if(r.next()){
+                JOptionPane.showMessageDialog(null, "Username already exists", "LOGIN ERROR",JOptionPane.ERROR_MESSAGE);
+            }
             
-            dispose();
-            new Form().setVisible(true);
+            else if(rs.next()){
+                JOptionPane.showMessageDialog(null, "Email already exists", "LOGIN ERROR",JOptionPane.ERROR_MESSAGE);
+            }
+            else{
             
-        } catch (SQLException | ClassNotFoundException ex) {
-           
+            
+            
+            if(un.getText().equals("") || ei.getText().equals("") || pw.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "One or more entries are blank", "LOGIN ERROR",JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                if(ei.getText().length()>10 && ei.getText().substring(ei.getText().length()-10,ei.getText().length()).equals("@gmail.com")){
+                    
+                    
+                    
+                    if(pw.getText().length()<9){
+                        JOptionPane.showMessageDialog(null, "Password length must be greater than 8", "LOGIN ERROR",JOptionPane.ERROR_MESSAGE);
+                    }
+                    else{
+                        try {
+                            String s="insert into form (username , email, password) values (?,?,?)";
+                            PreparedStatement ps=conn.prepareStatement(s);
+                            ps.setString(1, un.getText());
+                            ps.setString(2, ei.getText());
+                            ps.setString(3,pw.getText());
+                            
+                            ps.executeUpdate();
+                            
+                            ps.close();
+                            
+                            dispose();
+                            new Form().setVisible(true);
+                            
+                        } catch (SQLException | ClassNotFoundException ex) {
+                            
+                        }
+                    }}
+                else{
+                    JOptionPane.showMessageDialog(null, "Invalid email", "LOGIN ERROR",JOptionPane.ERROR_MESSAGE);
+                }}
+        } }catch (SQLException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }                                        
 
    
@@ -120,7 +164,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField pw;
+    private javax.swing.JPasswordField pw;
     private javax.swing.JTextField un;
     // End of variables declaration                   
 }
